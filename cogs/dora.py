@@ -4,7 +4,6 @@
 Пример:
     channel_create_delay = 1   # 1 секунда между созданием каналов
     spam_delay = 10    
-    await asyncio.sleep(0) так же меняется, можно поставить 0, 10 но секунды нет можно поставить 0.01 
         by https://discord.gg/l1te 
 """
 
